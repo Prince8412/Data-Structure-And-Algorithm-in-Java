@@ -21,18 +21,27 @@
 // 111
 
 import java.util.Scanner;
+
 public class Main {
-	
-	public static void main(String[] args) {
-		// Write your code here
-		Scanner s = new Scanner(System.in);
-		int n = s.nextInt();
-		int rem,sum=0;
-		while(n>0){
-			rem=n%2;
-			sum=sum+(rem*10);
-			n=n/10;
-		}
-		System.out.println(sum);
-	}
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int decimalNumber = scanner.nextInt();
+        String binaryNumber = decimalToBinary(decimalNumber);
+        System.out.println(binaryNumber);
+    }
+
+    public static String decimalToBinary(int decimalNumber) {
+        if (decimalNumber == 0) {
+            return "0";
+        }
+
+        StringBuilder binary = new StringBuilder();
+        while (decimalNumber > 0) {
+            int remainder = decimalNumber % 2;
+            binary.insert(0, remainder); // Insert the remainder at the beginning
+            decimalNumber /= 2;
+        }
+
+        return binary.toString();
+    }
 }
