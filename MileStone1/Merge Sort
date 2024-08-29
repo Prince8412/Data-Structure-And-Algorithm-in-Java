@@ -1,1 +1,38 @@
+class solution{
+  private static void merge(int[] arr, int low, int mid, int high){
+      ArrayList<Integer> temp = new ArrayList<>();
+      int left = low;
+      int right = mid+1;
+      while(left<=mid && right<=high){
+        if(arr[left] < arr[right]){
+          temp.add(arr[left];
+        }
+        else{
+          temp.add(arr[right];
+        }
+      }
+  // If elements of left half are still left
+      while(left<=mid){
+        temp.add(arr[left]);
+      }
+  // If elements of the right half are still right
+      while(right<=high){
+        temp.add(arr[right]);
+      }
 
+// Transfering all the elements of temp in arr (here temp is an arraylist and arr is an array)
+      for(int i = low; i<=high; i++){
+        arr[i] = temp.get(i-low);
+      }
+  }
+// Method for performing this operation in Recursive manner with correct paramenters
+
+  public static void mergesort (int[], int low, int high){
+    if(low>=high) return;
+    int mid = (low + high)/2;
+  
+    mergesort(arr, low, mid);
+    mergesort(arr, mid+1, high);
+    merge(arr, low, mid, high);
+  }
+}
